@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row } from 'react-bootstrap'
 
-import ListSvg from './listsvg.svg'
+import list from './listsvg.svg'
 
 import authInstance from '../../util/axios.util';
 
@@ -18,7 +18,7 @@ const Landing = () => {
 
                 Deserunt qui deserunt magna nulla velit Lorem do aliqua anim. Laboris nostrud ullamco exercitation ullamco. Ut dolore fugiat excepteur excepteur laboris duis sunt est aute. Officia minim duis aliquip cillum elit in ipsum cillum voluptate consectetur eiusmod elit reprehenderit.
                 
-                
+                <img className='card-image-top' src={list} alt='list' />
 
 
             </Container>
