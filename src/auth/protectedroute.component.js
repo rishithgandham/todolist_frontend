@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom';
 
 import axios from 'axios';
 import authInstance from '../util/axios.util';
+import { logout } from './auth';
 
 
 const ProtectedRoute = ({ children, setNav }) => {
@@ -28,8 +29,7 @@ const ProtectedRoute = ({ children, setNav }) => {
                 console.log(error);
                 setIsAuthenticated(false);
                 setNav(false)
-                localStorage.removeItem('token');
-                window.location.href = '/#/login'
+                logout();
             })
             .then((response) => {
                 console.log(response)
@@ -49,8 +49,10 @@ const ProtectedRoute = ({ children, setNav }) => {
     return (
         <>
             <div></div>
-            {  loading ? <div className='text-center mt-5'><h1 className=''>Loading...</h1></div> : <div></div>}
-            {executeBlock && !isAuthenticated ? <><div></div> <Navigate to="/login" /></> : children}
+            {  loading ? 
+                <div className='text-center mt-5'><h1 className=''>Loading...</h1></div> : 
+                executeBlock && !isAuthenticated ? <><div></div> <Navigate to="/login" /></> : children}
+            
         </>
 
     )
