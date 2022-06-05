@@ -9,10 +9,9 @@ const BASE_URL = 'http://localhost:8080'
 const authInstance = axios.create({
     baseURL: BASE_URL,
 })
-
 axios.interceptors.request.use((config) => {
     config.url = "".concat(BASE_URL, config.url);
-    console.log(config)
+    // console.log(config)
     return config;
 }, (error) => {
     return Promise.reject(error);
