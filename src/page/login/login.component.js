@@ -66,14 +66,15 @@ const LoginComponent = ({ setNav }) => {
 
 
                                 
-                                <label class="form-label">Password</label>
-                                <div class="input-group mb-3">
+                               
+                                <div class="input-group ">
                                     <input type={show} onChange={(event) => setPassword(event.target.value)} className="form-control form-control-lg" />
                                     
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary" type="button" onClick={() => setShow(show === 'password' ? 'text' : 'password')}><BiShow size={34}/></button>
                                     </div>
                                 </div>
+                                <label class="form-label">Password</label>
 
 
                                 <div class="d-flex justify-content-around align-items-center mb-4">
@@ -81,7 +82,7 @@ const LoginComponent = ({ setNav }) => {
                                 </div>
 
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <button type="submit" onClick={handleFormSubmit}class="btn btn-primary btn-lg btn-block">Sign in</button>
+                                    <button type="submit" disabled={!(email && password)}onClick={handleFormSubmit}class="btn btn-primary btn-lg btn-block">Sign in</button>
                                 </div>
 
 

@@ -106,7 +106,7 @@ function SignupComponent({setNav}) {
 
 
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <button type="submit" onClick={handleFormSubmit} class="btn btn-primary btn-lg btn-block">Register</button>
+                                    <button type="submit" disabled={!(email && password && firstName && lastName && vp && ve)} onClick={handleFormSubmit} class="btn btn-primary btn-lg btn-block">Register</button>
                                 </div>
 
 
