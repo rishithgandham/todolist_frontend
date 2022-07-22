@@ -25,9 +25,9 @@ axios.interceptors.response.use((response) => {
     return response;
 
 }, (error) => {
-    if (error.response.status.includes([401, 403])) {
+    if ([401, 403].includes(error.response.status)) {
         logout();
-        toast.error('Your session has expired');
+        toast.error('Your session has expired or you need to log in again');
         return Promise.reject(error);
     }
     console.log(error.response.status,  error.response.data);
@@ -56,9 +56,9 @@ authInstance.interceptors.response.use((response) => {
     }
     return response;
 }, (error) => {
-    if (error.response.status.includes([401, 403])) {
+    if ([401, 403].includes(error.response.status)) {
         logout();
-        toast.error('Your session has expired');
+        toast.error('Your session has expired or you need to log in again');
         return Promise.reject(error);
     }
     console.log('an error occured', error.response.data)
