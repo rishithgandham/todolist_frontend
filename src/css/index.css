@@ -25,3 +25,18 @@ body {
   background: rgba(249, 130, 97, 0.2);
 }
 
+
+.list-group-item-dark {
+  color: #3f3f3f !important;
+  background-color: #d3d3d4 !important;
+}
+
+.add-button {
+  border: none;
+  width: 100px;
+  height: 100px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-radius: 100px;
+}
+
