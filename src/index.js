@@ -21,8 +21,12 @@ import HomePage from './page/home/home.page';
 import SignupComponent from './page/signup/signup.component';
 import EmailSentComponent from './page/emailsent/emailsent.component';
 import ConfirmPageComponent from './page/emailsent/confirmpage.component';
+import ViewListPage from './page/viewlist/viewlist.page';
+import ViewlistsPage from './page/viewlists/viewlists.page';
 
 import {ToastContainer} from 'react-toastify';
+
+
 
 
 
@@ -58,6 +62,8 @@ const Router = () => {
                     <Route path='/emailsent/:email' element={<EmailSentComponent />}></Route>
                     <Route path='/home' element={<ProtectedRoute setNav={setNavState}><HomePage /></ProtectedRoute>}></Route>
                     <Route path='/confirm/:token' element={<ConfirmPageComponent />}></Route>
+                    <Route path='/viewlists' element={<ProtectedRoute setNav={setNavState}><ViewlistsPage /></ProtectedRoute>}></Route>
+                    <Route path='/viewlist' element={<ProtectedRoute setNav={setNavState}><ViewListPage /></ProtectedRoute>}></Route>
                 </Routes>
 
             </HashRouter>
