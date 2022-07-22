@@ -36,19 +36,20 @@ function NavbarComponent({ authState }) {
 
             <Navbar className="py-2 margin user-navbar navbar-light-red" bg="" variant="dark" expand="lg">
                 <Container>
-                    <Navbar.Brand href="/u/home">Todolist</Navbar.Brand>
+                    <Navbar.Brand href="/#/home">Todolist</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="ms-auto">
                             
-                            <Nav.Link href="/u/viewlists">  View Todolists</Nav.Link>
-                            <Nav.Link href="/u/home"> Home </Nav.Link>
+                            <Nav.Link href="/#/viewlists">  View Todolists</Nav.Link>
+                            <Nav.Link href="/#/home"> Home </Nav.Link>
                             < NavDropdown title={localStorage.getItem('firstName')} id="basic-nav-dropdown">
                                 
-                                <NavDropdown.Item href="/u/profile">Profile</NavDropdown.Item>
-                                <NavDropdown.Item href="/u/settings">Settings</NavDropdown.Item>
+                                <NavDropdown.Item href="/#/profile">Profile</NavDropdown.Item>
+                                <NavDropdown.Item href="/#/settings">Settings</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item onClick={event => logout()} style={{backgroundColor: 'light-red'}}>Logout</NavDropdown.Item>
+                                <NavDropdown.Item onClick={event => {logout(); 
+                                    window.location.href='/#/login'}}><p  class='text-danger'>Logout</p></NavDropdown.Item>
                             </NavDropdown>
                             
                         </Nav>
