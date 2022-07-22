@@ -30,7 +30,7 @@ export function logout() {
     localStorage.removeItem('details');
     localStorage.removeItem('email')
     localStorage.removeItem('token')
-    // window.location.href = '/#/check';
+    window.location.reload();
 }
 
 export default isAuth;
