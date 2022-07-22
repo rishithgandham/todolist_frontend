@@ -71,14 +71,16 @@ function HomePage() {
                             <div className=''>
                                 <ul class="list-group">
                                     {overdue.map(list =>
-                                        <li class="list-group-item list-group-item-action flex-column align-items-start" key={list}>
-                                            <div class="d-flex w-100 justify-content-between">
-                                                <h5 class="mb-1">{list.name}</h5>
-                                                <small class="text-danger">{list.dueDate.slice(0, 10)}</small>
-                                            </div>
-                                            <p class="mb-1">{list.description}</p>
+                                        <li class="list-group-item list-group-item-action flex-column align-items-start" key={list.id}>
+                                            <a onClick={() => window.location.href=`/#/viewlist?id=${list.id}`}>
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h5 class="mb-1">{list.name}</h5>
+                                                    <small class="text-danger">{list.dueDate.slice(0, 10)}</small>
+                                                </div>
+                                                <p class="mb-1">{list.description}</p>
+                                            </a>
                                             <div class="d-flex w-100 justify-content-center">
-                                                <button type="button" class="btn btn-link text-danger" onClick={() => { setShowDelete(true); setDeleteList(list)}}>Delete</button>
+                                                <button type="button" class="btn btn-link text-danger" onClick={() => { setShowDelete(true); setDeleteList(list) }}>Delete</button>
                                                 <button type="button" class="btn btn-link text-primary" onClick={() => { setShowEdit(true); setEditList(list) }}>Edit</button>
                                             </div>
                                         </li>
@@ -93,7 +95,7 @@ function HomePage() {
                 </div>
             </section>
 
-            <EditList showmodal={showEdit} setShow={setShowEdit} list={editList} forceUpdate={[refresh, setRefresh]}/>
+            <EditList showmodal={showEdit} setShow={setShowEdit} list={editList} forceUpdate={[refresh, setRefresh]} />
             <DeleteList showmodal={showDelete} setShow={setShowDelete} list={deleteList} forceUpdate={[refresh, setRefresh]} />
 
 
