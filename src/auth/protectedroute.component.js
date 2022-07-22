@@ -5,6 +5,8 @@ import axios from 'axios';
 import authInstance from '../util/axios.util';
 import { logout } from './auth';
 
+import { toast } from 'react-toastify';
+
 
 const ProtectedRoute = ({ children, setNav }) => {
     let executeBlock = false;
@@ -19,7 +21,13 @@ const ProtectedRoute = ({ children, setNav }) => {
             setIsAuthenticated(false);
             setLoading(false)
             executeBlock = true;
+            localStorage.removeItem('firstName');
+            localStorage.removeItem('lastName');
+            localStorage.removeItem('details');
+            localStorage.removeItem('email')
+            localStorage.removeItem('token')
             window.location.href = '/#/login';
+            toast.error('Your session has expired or you need to login again');
             return;
         }
         async function checkAuth() {
@@ -29,7 +37,12 @@ const ProtectedRoute = ({ children, setNav }) => {
                 console.log(error);
                 setIsAuthenticated(false);
                 setNav(false)
-                logout();
+                localStorage.removeItem('firstName');
+                localStorage.removeItem('lastName');
+                localStorage.removeItem('details');
+                localStorage.removeItem('email')
+                localStorage.removeItem('token')
+                window.location.href = '/#/login';
             })
             .then((response) => {
                 console.log(response)

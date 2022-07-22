@@ -26,10 +26,11 @@ async function isAuth() {
 
 export function logout() {
     localStorage.removeItem('firstName');
-    localStorage.removeItem('user')
+    localStorage.removeItem('lastName');
+    localStorage.removeItem('details');
+    localStorage.removeItem('email')
     localStorage.removeItem('token')
-    window.location.href = '/#/'
-    window.location.reload();
+    // window.location.href = '/#/check';
 }
 
 export default isAuth;
