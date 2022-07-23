@@ -22,10 +22,12 @@ import EmailSentComponent from './page/emailsent/emailsent.page';
 import ConfirmPageComponent from './page/emailsent/confirmpage.page';
 import ViewListPage from './page/viewlist/viewlist.page';
 import ViewlistsPage from './page/viewlists/viewlists.page';
+import ProfilePage from './page/profile/profile.page';
 
 import ProtectedRoute from './auth/protectedroute.component';
 
 import {ToastContainer} from 'react-toastify';
+
 
 
 
@@ -66,6 +68,7 @@ const Router = () => {
                     <Route path='/home' element={<ProtectedRoute setNav={setNavState}><HomePage /></ProtectedRoute>}></Route>
                     <Route path='/viewlists' element={<ProtectedRoute setNav={setNavState}><ViewlistsPage /></ProtectedRoute>}></Route>
                     <Route path='/viewlist' element={<ProtectedRoute setNav={setNavState}><ViewListPage /></ProtectedRoute>}></Route>
+                    <Route path='/profile' element={<ProtectedRoute setNav={setNavState}><ProfilePage /></ProtectedRoute>}></Route>
                 </Routes>
 
             </HashRouter>

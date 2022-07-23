@@ -46,7 +46,6 @@ function NavbarComponent({ authState }) {
                             < NavDropdown title={localStorage.getItem('firstName')} id="basic-nav-dropdown">
                                 
                                 <NavDropdown.Item href="/#/profile">Profile</NavDropdown.Item>
-                                <NavDropdown.Item href="/#/settings">Settings</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item onClick={event => {logout(); 
                                     window.location.href='/#/login'}}><p  class='text-danger'>Logout</p></NavDropdown.Item>
