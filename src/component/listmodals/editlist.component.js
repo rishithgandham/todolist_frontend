@@ -40,17 +40,17 @@ const EditList = ({ showmodal, setShow, list, forceUpdate }) => {
 
 
                         <div class="form-outline mb-4">
-                            <input type="text" onChange={event => {setName(event.target.value)}} value={list.name && list.name} className="form-control form-control-md" />
+                            <input type="text" onChange={event => {setName(event.target.value)}} placeholder={list.name} className="form-control form-control-md" />
                             <label class="form-label" >Name</label>
                         </div>
 
                         <div class="form-outline mb-4">
-                            <input type="text" onChange={event => setDescription(event.target.value)} value={list.description && list.description} className="form-control form-control-md" />
+                            <input type="text" onChange={event => setDescription(event.target.value)} placeholder={list.description} className="form-control form-control-md" />
                             <label class="form-label">Description</label>
                         </div>
 
                         <div class="form-outline mb-4">
-                            <input type="date" onChange={event => setDueDate(event.target.value)} value={list.dueDate && list.dueDate}  className="form-control form-control-md" />
+                            <input type="date" onChange={event => setDueDate(event.target.value)}   className="form-control form-control-md" />
                             <label class="form-label">Due Date</label>
                         </div>
 

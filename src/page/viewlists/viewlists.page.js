@@ -44,7 +44,7 @@ export default function ViewlistsPage(props) {
                             <a onClick={() => window.location.href=`/#/viewlist?id=${list.id}`}>
                             <div class="d-flex w-100 justify-content-between">
                                 <h5 class="mb-1">{list.name}</h5>
-                                <small class="text-danger">{list.dueDate.slice(0, 10)}</small>
+                                <small class={Date.parse(list.dueDate) < Date.now() ? 'text-danger' : 'text-primary'}>{list.dueDate.slice(0, 10)}</small>
                             </div>
                             <p class="mb-1">{list.description}</p>
                             </a>
