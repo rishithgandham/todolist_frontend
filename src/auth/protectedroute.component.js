@@ -17,7 +17,7 @@ const ProtectedRoute = ({ children, setNav }) => {
         const token = localStorage.getItem('token');
         // console.log(token)
         if (!token || token === 'undefined') {
-            
+
             setIsAuthenticated(false);
             setLoading(false)
             executeBlock = true;
@@ -30,47 +30,62 @@ const ProtectedRoute = ({ children, setNav }) => {
             toast.error('Your session has expired or you need to login again');
             return;
         }
-        async function checkAuth() {
-            await authInstance.post('/api/v5/isauthenticated', {
-                jwt: token
-            }).catch((error) => {
-                console.log(error);
-                setIsAuthenticated(false);
-                setNav(false)
-                localStorage.removeItem('firstName');
-                localStorage.removeItem('lastName');
-                localStorage.removeItem('details');
-                localStorage.removeItem('email')
-                localStorage.removeItem('token')
-                window.location.href = '/#/login';
-            })
+
+        checkAuth(token).then(() => {
+
+            userDetails().then(() => {
+                setLoading(false);
+                executeBlock = true;
+            });
+
+            return;
+        });
+    }, [])
+
+    async function checkAuth(token) {
+        await authInstance.post('/api/v5/isauthenticated', {
+            jwt: token
+        }).catch((error) => {
+            console.log(error);
+            setIsAuthenticated(false);
+            setNav(false)
+            logout();
+        })
             .then((response) => {
-                console.log(response)
+                console.log(response.status)
                 setNav(true)
                 setIsAuthenticated(true);
                 return response.data;
             })
-            return isAuthenticated;
-        }
-        checkAuth().then(() => {
-            setLoading(false);
-            executeBlock = true;
+        return isAuthenticated;
+    }
+
+    async function userDetails() {
+        await authInstance.get('/api/v4/userdetails').then((response) => {
+            localStorage.setItem('firstName', response.data.firstName);
+            localStorage.setItem('lastName', response.data.lastName);
+            localStorage.setItem('email', response.data.email);
+            localStorage.setItem('details', [response.data.firstName, response.data.lastName, response.data.email]);
+            setNav(false);
+            setNav(true);
         });
-    }, [])
+        return isAuthenticated;
+    }
+
 
 
     return (
         <>
             <div></div>
-            {  loading ? 
-                <div className='text-center mt-5'><h1 className=''>Loading...</h1></div> : 
+            {loading ?
+                <div className='text-center mt-5'><h1 className=''>Loading...</h1></div> :
                 executeBlock && !isAuthenticated ? <><div></div> <Navigate to="/login" /></> : children}
-            
+
         </>
 
     )
 
-    
+
 
 
 }
